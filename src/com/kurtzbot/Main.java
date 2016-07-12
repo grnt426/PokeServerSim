@@ -8,6 +8,9 @@ import java.util.Random;
 
 public class Main {
 
+	public static final long PLAYFIELD_X = 800;
+	public static final long PLAYFIELD_Y = 800;
+
     public static void main(String[] args) {
 
 	    Random random = new Random(0);
@@ -25,7 +28,7 @@ public class Main {
 
 	    // Tell renderer what's up
 	    WorldWindow window = new WorldWindow(cache);
-
+	    int stepsToMove = 0;
 	    while(true) {
 		    long curTime = System.currentTimeMillis();
 		    cache.clearDead(curTime);
@@ -33,7 +36,10 @@ public class Main {
 		    for(Player p : players) {
 
 			    // Move it, Move it!
-			    p.move();
+			    if(stepsToMove++ > 5) {
+				    p.move();
+				    stepsToMove = 0;
+			    }
 
 			    // Run into the high grass and encounter...
 			    List<Mon> generated = gen.generate(curTime, p.x, p.y);

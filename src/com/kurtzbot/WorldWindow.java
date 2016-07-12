@@ -9,10 +9,10 @@ public class WorldWindow extends JFrame {
 	WorldRenderer renderer;
 
 	public WorldWindow(Cache cache) {
-		renderer = new WorldRenderer(800, 800, cache);
+		renderer = new WorldRenderer((int)Main.PLAYFIELD_X, (int)Main.PLAYFIELD_Y, cache);
 		setTitle("PokeSim");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(new Dimension(800, 800));
+		setSize(new Dimension((int)Main.PLAYFIELD_X, (int)Main.PLAYFIELD_Y));
 		add(renderer);
 		setVisible(true);
 	}
