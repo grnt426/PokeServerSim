@@ -1,10 +1,8 @@
 package com.kurtzbot;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 
 public class Main {
 
@@ -29,7 +27,7 @@ public class Main {
 	    // Tell renderer what's up
 	    WorldWindow window = new WorldWindow(cache);
 	    int stepsToMove = 0;
-	    while(true) {
+	    while(window.isStillOpen()) {
 		    long curTime = System.currentTimeMillis();
 		    cache.clearDead(curTime);
 		    HashMap<String, Mon> totalMon = new HashMap<>();
@@ -43,15 +41,12 @@ public class Main {
 
 			    // Run into the high grass and encounter...
 			    List<Mon> generated = gen.generate(curTime, p.x, p.y);
-			    if (!generated.isEmpty()) {
-
-			    }
 
 			    // ...a Mon! Give it a location
 			    for(Mon mon : generated) {
+				    p.capture(mon);
 				    long x = p.x + random.nextInt(20) - 10;
 				    long y = p.y + random.nextInt(20) - 10;
-				    System.out.println("Found one! " + x + " " + y);
 				    cache.add(x, y, curTime + IntervalDefinition.INTERVAL_LENGTH);
 			    }
 		    }
@@ -62,6 +57,14 @@ public class Main {
 			    Thread.sleep(10);
 		    } catch (InterruptedException e) {
 			    e.printStackTrace();
+		    }
+	    }
+
+	    for(Player player : players) {
+		    System.out.println("Player " + player.c.getRGB() + " caught " + player.getCaptured().size()
+		            + " unique types!");
+		    for(Mon mon : player.getCaptured().keySet()) {
+			    System.out.println(player.getCaptured().get(mon) + " " + mon + " captured.");
 		    }
 	    }
     }
