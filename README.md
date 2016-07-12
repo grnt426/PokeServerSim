@@ -5,12 +5,14 @@ Out of curiosity, I wanted to explore what it might be like to create a mostly-s
 procedurally generated world for spawning Pokemon.
 
 The Player features are as follows:
+
 1. Players should feel like Pokemon are generated randomly as they move about the world.
 2. Players expect to see a distribution of Pokemon rarity (Common -> Rare).
-2. Players should see region relevant Pokemon.
+3. Players should see region relevant Pokemon.
 4. Players should see the Pokemon others see, as to encourage teamwork and discovery.
 
 The Technical constraints (for fun) are as follows:
+
 1. Regions not seen should not have (substantial) calculations performed
 2. Generating Pokemon should be stateless. No information about previous spawns/timers are needed.
 3. Caching results of generated Pokemon is OK
