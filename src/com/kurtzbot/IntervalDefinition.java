@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public class IntervalDefinition {
 
-	public ArrayList<Interval> intervals;
-
-	public final long MAX_VAL = 100_000_000L;
 	public static final long INTERVAL_LENGTH = 5_000L;
+	public final long MAX_VAL = 100_000_000L;
+	public ArrayList<Interval> intervals;
 
 	public IntervalDefinition() {
 		intervals = new ArrayList<>();

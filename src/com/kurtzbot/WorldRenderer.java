@@ -37,9 +37,9 @@ public class WorldRenderer extends JPanel {
 	}
 
 	private void drawPlayers(Graphics g) {
-		for(Player p : players) {
+		for (Player p : players) {
 			g.setColor(p.c);
-			g.fillOval((int)p.x - 4, (int)p.y - 4, 8, 8);
+			g.fillOval((int) p.x - 4, (int) p.y - 4, 8, 8);
 		}
 	}
 
@@ -49,8 +49,8 @@ public class WorldRenderer extends JPanel {
 		int totalPoints = 100;
 		int spacing = maxWidth / totalPoints;
 		g.setColor(new Color(0, 0, 0));
-		for(int x = 0; x < totalPoints; x++) {
-			for(int y = 0; y < totalPoints; y++) {
+		for (int x = 0; x < totalPoints; x++) {
+			for (int y = 0; y < totalPoints; y++) {
 				g.drawRect(spacing / 2 + x * spacing, spacing / 2 + y * spacing, dotSize, dotSize);
 			}
 		}
@@ -62,7 +62,7 @@ public class WorldRenderer extends JPanel {
 	}
 
 	@Override
-	public Dimension getPreferredSize(){
+	public Dimension getPreferredSize() {
 		return new Dimension(maxWidth, maxHeight);
 	}
 }
