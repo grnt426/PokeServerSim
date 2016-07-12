@@ -30,11 +30,9 @@ public class WorldRenderer extends JPanel {
 	}
 
 	private void drawMon(Graphics g) {
-		synchronized(Cache.class) {
-			for (CachedMon mon : cache.getCurrent()) {
-				g.setColor(new Color(255, 135, 232));
-				g.drawOval((int) mon.x - 12, (int) mon.y - 12, 24, 24);
-			}
+		for (CachedMon mon : cache.getCurrent()) {
+			g.setColor(new Color(255, 135, 232));
+			g.drawOval((int) mon.x - 12, (int) mon.y - 12, 24, 24);
 		}
 	}
 

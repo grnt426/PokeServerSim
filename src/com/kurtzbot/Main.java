@@ -4,10 +4,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) {
+
+	    Random random = new Random(0);
 
 	    // Generate Players
 	    List<Player> players = new ArrayList<>();
@@ -40,15 +43,17 @@ public class Main {
 
 			    // ...a Mon! Give it a location
 			    for(Mon mon : generated) {
-				    System.out.println("Found one! " + p.x + " " + p.y);
-				    cache.add(p.x, p.y, curTime + IntervalDefinition.INTERVAL_LENGTH);
+				    long x = p.x + random.nextInt(20) - 10;
+				    long y = p.y + random.nextInt(20) - 10;
+				    System.out.println("Found one! " + x + " " + y);
+				    cache.add(x, y, curTime + IntervalDefinition.INTERVAL_LENGTH);
 			    }
 		    }
 
 		    // Make a masterpiece
 		    window.update(players);
 		    try {
-			    Thread.sleep(11);
+			    Thread.sleep(10);
 		    } catch (InterruptedException e) {
 			    e.printStackTrace();
 		    }

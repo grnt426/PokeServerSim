@@ -1,18 +1,17 @@
 package com.kurtzbot;
 
-import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Cache {
 
-	Queue<CachedMon> cache = new LinkedList<>();
+	Queue<CachedMon> cache = new ConcurrentLinkedQueue<>();
 
-	public synchronized void clearDead(long cur) {
-		for(CachedMon mon : cache) {
-			if(mon.lifetime <= cur) {
+	public void clearDead(long cur) {
+		for (CachedMon mon : cache) {
+			if (mon.lifetime <= cur) {
 				cache.poll();
-			}
-			else{
+			} else {
 				return;
 			}
 		}
