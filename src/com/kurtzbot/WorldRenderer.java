@@ -8,14 +8,16 @@ public class WorldRenderer extends JPanel {
 
 	private final int maxWidth;
 	private final int maxHeight;
+	private final List<Region> regions;
 	private List<Player> players;
 	private Cache cache;
 
 
-	public WorldRenderer(int maxWidth, int maxHeight, Cache cache) {
+	public WorldRenderer(int maxWidth, int maxHeight, Cache cache, List<Region> regions) {
 		this.maxWidth = maxWidth;
 		this.maxHeight = maxHeight;
 		this.cache = cache;
+		this.regions = regions;
 	}
 
 	@Override
@@ -25,8 +27,16 @@ public class WorldRenderer extends JPanel {
 		setBackground(Color.WHITE);
 
 		drawGrid(g);
+		drawRegions(g);
 		drawPlayers(g);
 		drawMon(g);
+	}
+
+	private void drawRegions(Graphics g) {
+		for(Region region : regions) {
+			g.setColor(region.getC());
+			g.fillRect(region.getStartX(), region.getStartY(), region.getWidth(), region.getHeight());
+		}
 	}
 
 	private void drawMon(Graphics g) {

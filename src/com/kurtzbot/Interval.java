@@ -1,13 +1,19 @@
 package com.kurtzbot;
 
+/**
+ * Maps a particular Mon to a given Rarity, which defines the triggering
+ * interval.
+ *
+ * TODO: This class should only be instantiated by a Factory to minimize object count
+ */
 public class Interval {
 
 	public final Mon mon;
-	public final long interval;
+	public Rarity rarity;
 
-	public Interval(Mon mon, long interval) {
+	public Interval(Mon mon, Rarity rarity) {
 		this.mon = mon;
-		this.interval = interval;
+		this.rarity = rarity;
 	}
 
 	public Mon getMon() {
@@ -15,6 +21,10 @@ public class Interval {
 	}
 
 	public long getInterval() {
-		return interval;
+		return rarity.getInterval();
+	}
+
+	public Rarity getRarity() {
+		return rarity;
 	}
 }

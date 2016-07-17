@@ -12,8 +12,8 @@ public class WorldWindow extends JFrame {
 
 	private boolean stillOpen = true;
 
-	public WorldWindow(Cache cache) {
-		renderer = new WorldRenderer((int) Main.PLAYFIELD_X, (int) Main.PLAYFIELD_Y, cache);
+	public WorldWindow(Cache cache, List<Region> regions) {
+		renderer = new WorldRenderer((int) Main.PLAYFIELD_X, (int) Main.PLAYFIELD_Y, cache, regions);
 		setTitle("PokeSim");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setSize(new Dimension((int) Main.PLAYFIELD_X, (int) Main.PLAYFIELD_Y));

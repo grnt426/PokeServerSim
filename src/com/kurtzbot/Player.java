@@ -8,6 +8,7 @@ public class Player {
 
 	// For seeding movement to something predictable
 	static int id;
+	private final String name;
 	Random random = new Random(id++);
 
 	long x;
@@ -16,11 +17,12 @@ public class Player {
 
 	HashMap<Mon, Integer> captured;
 
-	public Player(long x, long y, Color c) {
+	public Player(long x, long y, Color c, String name) {
 		this.x = x;
 		this.y = y;
 		this.c = c;
 		captured = new HashMap<>();
+		this.name = name;
 	}
 
 	public void move() {
@@ -44,5 +46,9 @@ public class Player {
 
 	public HashMap<Mon, Integer> getCaptured() {
 		return captured;
+	}
+
+	public String getName() {
+		return name;
 	}
 }
